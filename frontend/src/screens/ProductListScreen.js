@@ -4,7 +4,7 @@ import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-// import Paginate from '../components/Paginate'
+import Paginate from '../components/Paginate'
 import {
   listProducts,
   deleteProduct,
@@ -13,12 +13,12 @@ import {
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
 const ProductListScreen = ({ history, match }) => {
-//   const pageNumber = match.params.pageNumber || 1
+  const pageNumber = match.params.pageNumber || 1
 
   const dispatch = useDispatch()
 
-const productList = useSelector((state) => state.productList)
-const { loading, error, products } = productList
+  const productList = useSelector((state) => state.productList)
+  const { loading, error, products, page, pages } = productList
 
   const productDelete = useSelector((state) => state.productDelete)
   const {
@@ -41,13 +41,14 @@ const { loading, error, products } = productList
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET })
 
-    if (!userInfo.isAdmin) {
+    if (!userInfo || !userInfo.isAdmin) {
       history.push('/login')
     }
+
     if (successCreate) {
       history.push(`/admin/product/${createdProduct._id}/edit`)
     } else {
-      dispatch(listProducts())
+      dispatch(listProducts('', pageNumber))
     }
   }, [
     dispatch,
@@ -56,7 +57,7 @@ const { loading, error, products } = productList
     successDelete,
     successCreate,
     createdProduct,
-    // pageNumber,
+    pageNumber,
   ])
 
   const deleteHandler = (id) => {
@@ -76,7 +77,7 @@ const { loading, error, products } = productList
           <h1>Products</h1>
         </Col>
         <Col className='text-right'>
-          <Button className='my-3' onClick={createProductHandler}>
+          <Button className='float-end'  onClick={createProductHandler} >
             <i className='fas fa-plus'></i> Create Product
           </Button>
         </Col>
@@ -84,7 +85,7 @@ const { loading, error, products } = productList
       {loadingDelete && <Loader />}
       {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
       {loadingCreate && <Loader />}
-      {errorCreate && <Message variant='danger'>{errorCreate}</Message>} 
+      {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (
@@ -128,6 +129,7 @@ const { loading, error, products } = productList
               ))}
             </tbody>
           </Table>
+          <Paginate pages={pages} page={page} isAdmin={true} />
         </>
       )}
     </>

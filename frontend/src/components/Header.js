@@ -1,7 +1,7 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { LinkContainer} from 'react-router-bootstrap'
-import { Navbar,  Nav, Container, NavDropdown,  } from 'react-bootstrap'
+import { Navbar,  Nav, Container, NavDropdown,Row  } from 'react-bootstrap'
 import { logout } from '../actions/userActions'
 import SearchBox from './SearchBox'
 import { Route } from 'react-router-dom'
@@ -19,17 +19,24 @@ const Header = () => {
 
     return (
         <header>
-            <Navbar bg='dark' variant='dark' expand="lg" collapseOnSelect>
-                <Container>
+            <Navbar bg='dark' variant='dark' expand="lg" collapseOnSelect >
+                <Container class="container">
                     <LinkContainer to="/">
                         <Navbar.Brand>Grey-Light Shop</Navbar.Brand>
                     </LinkContainer>
-
+                 
+                    
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
+
+                    <LinkContainer to="/just adding space in easy way">
+                    <Nav.Link>
+                    </Nav.Link>
+                    </LinkContainer>
+
                     <Route render={({ history }) => <SearchBox history={history} />} />
                     <Nav className='ms-auto'>
-
+                    
                     <LinkContainer to="/allproducts">
                     <Nav.Link>
                         All Products
@@ -37,7 +44,7 @@ const Header = () => {
                     </LinkContainer>
 
                   <NavDropdown title="Categories" id="basic-nav-dropdown" >
-                        <LinkContainer to='/mobiles'>
+                        <LinkContainer to='/smartphones'>
                         <NavDropdown.Item>
                         Mobile Phones
                         </NavDropdown.Item>
@@ -104,6 +111,7 @@ const Header = () => {
 
                     </Nav>
                     </Navbar.Collapse>
+                    
                 </Container>
             </Navbar>       
         </header>

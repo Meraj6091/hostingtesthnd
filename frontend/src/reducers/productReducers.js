@@ -23,20 +23,33 @@ import {
     PRODUCT_TOP_FAIL,
     PRODUCT_TOP_SUCCESS,
     PRODUCT_TOP_REQUEST,
+    PRODUCT_ELECTRONICS_REQUEST,
+    PRODUCT_ELECTRONICS_SUCCESS,
+    PRODUCT_ELECTRONICS_FAIL,
+    PRODUCT_SMARTPHONES_REQUEST,
+    PRODUCT_SMARTPHONES_SUCCESS,
+    PRODUCT_SMARTPHONES_FAIL,
+    PRODUCT_COMPUTERS_REQUEST,
+    PRODUCT_COMPUTERS_SUCCESS,
+    PRODUCT_COMPUTERS_FAIL,
 } from '../constants/productConstants'
 
-export const productListReducer = (state = {products: []}, action) => {
-    switch(action.type){
-        case PRODUCT_LIST_REQUEST:
-            return {loading: true, products: [] }
-        case PRODUCT_LIST_SUCCESS:
-            return {loading: false, products:action.payload }
-        case PRODUCT_LIST_FAIL:
-            return {loading: false, error:action.payload }
-        default:
-            return state
-        
-    }
+export const productListReducer = (state = { products: [] }, action) => {
+  switch (action.type) {
+    case PRODUCT_LIST_REQUEST:
+      return { loading: true, products: [] }
+    case PRODUCT_LIST_SUCCESS:
+      return {
+        loading: false,
+        products: action.payload.products,
+        pages: action.payload.pages,
+        page: action.payload.page,
+      }
+    case PRODUCT_LIST_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
 }
 
 export const productDetailsReducer = (
@@ -125,3 +138,45 @@ export const productDetailsReducer = (
         return state
     }
   }
+
+  export const productElectronicsReducer = (state = { products: [] }, action) => {
+    switch (action.type) {
+      case PRODUCT_ELECTRONICS_REQUEST:
+        return { loading: true, products: [] }
+      case PRODUCT_ELECTRONICS_SUCCESS:
+        return { loading: false, products: action.payload }
+      case PRODUCT_ELECTRONICS_FAIL:
+        return { loading: false, error: action.payload }
+      default:
+        return state
+    }
+  }
+
+  export const productSmartPhonesReducer = (state = { products: [] }, action) => {
+    switch (action.type) {
+      case PRODUCT_SMARTPHONES_REQUEST:
+        return { loading: true, products: [] }
+      case PRODUCT_SMARTPHONES_SUCCESS:
+        return { loading: false, products: action.payload }
+      case PRODUCT_SMARTPHONES_FAIL:
+        return { loading: false, error: action.payload }
+      default:
+        return state
+    }
+  }
+
+  export const productComputersReducer = (state = { products: [] }, action) => {
+    switch (action.type) {
+      case PRODUCT_COMPUTERS_REQUEST:
+        return { loading: true, products: [] }
+      case PRODUCT_COMPUTERS_SUCCESS:
+        return { loading: false, products: action.payload }
+      case PRODUCT_COMPUTERS_FAIL:
+        return { loading: false, error: action.payload }
+      default:
+        return state
+    }
+  }
+
+  
+

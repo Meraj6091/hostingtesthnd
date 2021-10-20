@@ -42,6 +42,7 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 app.use(notFound)
 app.use(errorHandler)
  
+
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT, console.log (`server is tunning on port ${process.env.NODE_ENV} on port ${PORT}`.yellow.italic.bold))
