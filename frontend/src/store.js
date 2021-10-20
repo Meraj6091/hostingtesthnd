@@ -8,6 +8,9 @@ import { productListReducer,
         productUpdateReducer,
         productReviewCreateReducer,
         productTopRatedReducer,
+        productElectronicsReducer,
+        productSmartPhonesReducer,
+        productComputersReducer,
 } from "./reducers/productReducers"
 import { cartReducer } from "./reducers/cartReducers"
 import { 
@@ -50,6 +53,9 @@ const reducer = combineReducers({
     orderListMy: orderListMyReducer,
     orderList:orderListReducer,
     orderDeliver:orderDeliverReducer,
+    productElectronics:productElectronicsReducer,
+    productSmartPhones:productSmartPhonesReducer,
+    productComputers:productComputersReducer,
     
 })
 

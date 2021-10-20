@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown, Row } from "react-bootstrap";
 import { logout } from "../actions/userActions";
 import SearchBox from "./SearchBox";
 import { Route } from "react-router-dom";
@@ -19,18 +19,34 @@ const Header = () => {
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
-        <Container>
+        <Container class="container">
           <LinkContainer to="/">
             <Navbar.Brand>Grey-Light Shop</Navbar.Brand>
           </LinkContainer>
 
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
+            <LinkContainer to="/just adding space in easy way">
+              <Nav.Link></Nav.Link>
+            </LinkContainer>
+
             <Route render={({ history }) => <SearchBox history={history} />} />
             <Nav className="ms-auto">
               <LinkContainer to="/allproducts">
                 <Nav.Link>All Products</Nav.Link>
               </LinkContainer>
+
+              <NavDropdown title="Categories" id="basic-nav-dropdown">
+                <LinkContainer to="/smartphones">
+                  <NavDropdown.Item>Mobile Phones</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/computers">
+                  <NavDropdown.Item>Laptops & Computers</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/electronics">
+                  <NavDropdown.Item>Other Electronics</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
 
               <NavDropdown title="Categories" id="basic-nav-dropdown">
                 <LinkContainer to="/mobiles">

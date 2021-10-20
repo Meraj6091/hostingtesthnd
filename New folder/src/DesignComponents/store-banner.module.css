@@ -1,0 +1,15 @@
+.StoreBanner {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.image {
+  width: 135px;
+  object-fit: cover;
+}
+.image1 {
+  width: 135px;
+  object-fit: cover;
+  margin-left: var(--dl-space-space-halfunit);
+}
