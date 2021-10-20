@@ -9,7 +9,7 @@ import pdfMake from "pdfmake/build/pdfmake";
 import html2canvas from "html2canvas";
 import OrderListReciept from "./OrderListReciept";
 
-const OrderListScreen = ({ history }) => {
+const OrderListScreen = ({ history, triggerFunc }) => {
   const dispatch = useDispatch();
 
   const orderList = useSelector((state) => state.orderList);
@@ -79,7 +79,7 @@ const OrderListScreen = ({ history }) => {
           </tbody>
         </Table>
       )}
-      <OrderListReciept />
+      <Button onClick={triggerFunc}>Download</Button>
     </>
   );
 };

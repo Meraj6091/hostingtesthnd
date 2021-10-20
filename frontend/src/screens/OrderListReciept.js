@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import { listOrders } from "../actions/orderActions";
 import pdfMake from "pdfmake/build/pdfmake";
 import html2canvas from "html2canvas";
+import OrderListScreen from "./OrderListScreen";
 
 const OrderListReciept = ({ history }) => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const OrderListReciept = ({ history }) => {
 
   return (
     <div>
-      <div style={{ visibility: "none" }}>
+      <div>
         {loading ? (
           <Loader />
         ) : error ? (
@@ -93,9 +94,10 @@ const OrderListReciept = ({ history }) => {
           </Table>
         )}
       </div>
-      <button onClick={handlePdfExport}>button</button>
+      {/* <div>
+        <button onClick={handlePdfExport}>button</button>
+      </div> */}
+      <OrderListScreen triggerFunc={handlePdfExport} />
     </div>
   );
 };
-
-export default OrderListReciept;
