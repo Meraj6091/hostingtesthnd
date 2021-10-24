@@ -7,7 +7,6 @@ import Loader from "../components/Loader";
 import { listOrders } from "../actions/orderActions";
 import pdfMake from "pdfmake/build/pdfmake";
 import html2canvas from "html2canvas";
-import OrderListReciept from "./OrderListReciept";
 
 const OrderListScreen = ({ history, triggerFunc }) => {
   const dispatch = useDispatch();
