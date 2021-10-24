@@ -48,7 +48,7 @@ const Header = () => {
                 </LinkContainer>
               </NavDropdown>
 
-              <NavDropdown title="Categories" id="basic-nav-dropdown">
+              {/* <NavDropdown title="Categories" id="basic-nav-dropdown">
                 <LinkContainer to="/mobiles">
                   <NavDropdown.Item>Mobile Phones</NavDropdown.Item>
                 </LinkContainer>
@@ -58,7 +58,7 @@ const Header = () => {
                 <LinkContainer to="/electronics">
                   <NavDropdown.Item>Other Electronics</NavDropdown.Item>
                 </LinkContainer>
-              </NavDropdown>
+              </NavDropdown> */}
 
               <LinkContainer to="/cart">
                 <Nav.Link>
