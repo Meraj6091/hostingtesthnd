@@ -33,7 +33,9 @@ const AllProductsScreen = ({ match }) => {
         Go Back
       </Link>
 
-      <h1>Latest Products</h1>
+      <h1>
+        <center>All Products</center>
+      </h1>
       {loading ? (
         <Loader />
       ) : error ? (

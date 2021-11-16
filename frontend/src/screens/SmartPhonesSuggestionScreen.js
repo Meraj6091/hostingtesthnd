@@ -7,16 +7,16 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import Paginate from "../components/Paginate";
 // import Meta from '../components/Meta'
-import { listElectronics } from "../actions/productActions";
+import { listSmartPhones } from "../actions/productActions";
 
-const ElectronicsScreen = () => {
+const SmartPhonesSuggestion = () => {
   const dispatch = useDispatch();
 
-  const productElectronics = useSelector((state) => state.productElectronics);
-  const { loading, error, products } = productElectronics;
+  const productSmartPhones = useSelector((state) => state.productSmartPhones);
+  const { loading, error, products } = productSmartPhones;
 
   useEffect(() => {
-    dispatch(listElectronics());
+    dispatch(listSmartPhones());
   }, [dispatch]);
 
   return loading ? (
@@ -25,13 +25,7 @@ const ElectronicsScreen = () => {
     <Message variant="danger">{error}</Message>
   ) : (
     <Row>
-      <h1>
-        <center>
-          <br />
-          Other Electronics
-        </center>
-      </h1>
-      {products.map((product) => (
+      {products.splice(0, 8).map((product) => (
         <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
           <Link to={`/product/${product._id}`}>
             <Product product={product} />
@@ -42,4 +36,4 @@ const ElectronicsScreen = () => {
   );
 };
 
-export default ElectronicsScreen;
+export default SmartPhonesSuggestion;

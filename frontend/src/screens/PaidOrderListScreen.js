@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { LinkContainer } from "react-router-bootstrap";
-import { Table, Button, Row, Col } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { listOrders } from "../actions/orderActions";
+import { listPaidOrder } from "../actions/orderActions";
 import pdfMake from "pdfmake/build/pdfmake";
 import html2canvas from "html2canvas";
-import { Link } from "react-router-dom";
 
-const OrderListScreen = ({ history }) => {
+const PaidOrderListScreen = ({ history }) => {
   const dispatch = useDispatch();
 
-  const orderList = useSelector((state) => state.orderList);
-  const { loading, error, orders } = orderList;
+  const PaidOrderDetails = useSelector((state) => state.PaidOrderDetails);
+  const { loading, error, orders } = PaidOrderDetails;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -22,7 +21,7 @@ const OrderListScreen = ({ history }) => {
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
-      dispatch(listOrders());
+      dispatch(listPaidOrder());
     } else {
       history.push("/login");
     }
@@ -41,30 +40,13 @@ const OrderListScreen = ({ history }) => {
         ],
       };
       SetDisable(true);
-      pdfMake.createPdf(pdfExportSetting).download("order List");
+      pdfMake.createPdf(pdfExportSetting).download("orderList");
     });
   };
   return (
     <>
       <div>
-        <Row className="align-items-center">
-          <Col>
-            <h1>All Orders</h1>
-          </Col>
-          <Col className="text-right">
-            <Link to="/admin/paid">
-              <Button variant="info" className="float-end buttton-padding">
-                Have to mark as Delivered
-              </Button>
-            </Link>
-            <Link to="/admin/notpaid">
-              <Button variant="warning" className="float-end buttton-padding">
-                Not paid orders by Customer
-              </Button>
-            </Link>
-          </Col>
-        </Row>
-
+        <h1> Mark as deliver order in below list</h1>
         {loading ? (
           <Loader />
         ) : error ? (
@@ -139,4 +121,4 @@ const OrderListScreen = ({ history }) => {
   );
 };
 
-export default OrderListScreen;
+export default PaidOrderListScreen;

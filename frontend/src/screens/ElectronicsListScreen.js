@@ -9,19 +9,19 @@ import {
   listProducts,
   deleteProduct,
   createProduct,
+  listElectronics,
 } from "../actions/productActions";
 import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
 import pdfMake from "pdfmake/build/pdfmake";
 import html2canvas from "html2canvas";
-import { Link } from "react-router-dom";
 
-const ProductListScreen = ({ history, match }) => {
+const ElectronicListScreen = ({ history, match }) => {
   const pageNumber = match.params.pageNumber || 1;
 
   const dispatch = useDispatch();
 
-  const productList = useSelector((state) => state.productList);
-  const { loading, error, products, page, pages } = productList;
+  const productElectronics = useSelector((state) => state.productElectronics);
+  const { loading, error, products } = productElectronics;
 
   const productDelete = useSelector((state) => state.productDelete);
   const {
@@ -53,7 +53,7 @@ const ProductListScreen = ({ history, match }) => {
     if (successCreate) {
       history.push(`/admin/product/${createdProduct._id}/edit`);
     } else {
-      dispatch(listProducts("", pageNumber));
+      dispatch(listElectronics());
     }
   }, [
     dispatch,
@@ -88,7 +88,7 @@ const ProductListScreen = ({ history, match }) => {
         ],
       };
       SetDisable(true);
-      pdfMake.createPdf(pdfExportSetting).download("Product List");
+      pdfMake.createPdf(pdfExportSetting).download("Electronic List");
     });
   };
 
@@ -96,7 +96,7 @@ const ProductListScreen = ({ history, match }) => {
     <>
       <Row className="align-items-center">
         <Col>
-          <h1>All Products</h1>
+          <h2>Other Electronic Product List</h2>
         </Col>
         <Col className="text-right">
           <Button className="float-end" onClick={createProductHandler}>
@@ -104,29 +104,6 @@ const ProductListScreen = ({ history, match }) => {
           </Button>
         </Col>
       </Row>
-      <Row className="align-items-center">
-        <Col>
-          <h3>Filter By category</h3>
-        </Col>
-        <Col className="text-right">
-          <Link to="/admin/smartphonelist">
-            <Button variant="warning" className="float-end buttton-padding">
-              Smart Phones
-            </Button>
-          </Link>
-          <Link to="/admin/computerlist">
-            <Button variant="success" className="float-end buttton-padding">
-              Computers & Laptops
-            </Button>
-          </Link>
-          <Link to="/admin/electroniclist">
-            <Button variant="info" className="float-end buttton-padding">
-              Electronics
-            </Button>
-          </Link>
-        </Col>
-      </Row>
-      <br />
       {loadingDelete && <Loader />}
       {errorDelete && <Message variant="danger">{errorDelete}</Message>}
       {loadingCreate && <Loader />}
@@ -184,7 +161,6 @@ const ProductListScreen = ({ history, match }) => {
               ))}
             </tbody>
           </Table>
-          <Paginate pages={pages} page={page} isAdmin={true} />
           <br />
           <div>
             <Button
@@ -201,4 +177,4 @@ const ProductListScreen = ({ history, match }) => {
   );
 };
 
-export default ProductListScreen;
+export default ElectronicListScreen;

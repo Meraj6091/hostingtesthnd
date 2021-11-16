@@ -38,7 +38,7 @@ const Header = () => {
 
               <NavDropdown title="Categories" id="basic-nav-dropdown">
                 <LinkContainer to="/smartphones">
-                  <NavDropdown.Item>Mobile Phones</NavDropdown.Item>
+                  <NavDropdown.Item>Smart Phones</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to="/computers">
                   <NavDropdown.Item>Laptops & Computers</NavDropdown.Item>

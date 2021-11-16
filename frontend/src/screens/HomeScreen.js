@@ -26,11 +26,6 @@ const HomeScreen = ({ match }) => {
     dispatch(listProducts(keyword, pageNumber));
   }, [dispatch, keyword, pageNumber]);
 
-  useEffect(() => {
-    debugger;
-    console.log(products);
-  }, [productList]);
-
   return (
     <>
       {!keyword ? (
@@ -45,38 +40,43 @@ const HomeScreen = ({ match }) => {
         <div className="catagories-tabs">
           <Row>
             <Col sm>
-              <div className="container-topimage">
-                <img
-                  className="d-block w-100"
-                  src="https://images.unsplash.com/photo-1612442058361-178007e5e498?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
-                  alt="Third slide"
-                />
-                <h4 className="text-block-topimage">Nature</h4>
-              </div>
+              <Link to="/smartphones">
+                <div className="container-topimage">
+                  <img
+                    className=" opacity d-block w-100"
+                    src="https://images.pexels.com/photos/4195326/pexels-photo-4195326.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                    alt="first slide"
+                  />
+                  <h4 className="text-block-topimage">Mobile Phones</h4>
+                </div>
+              </Link>
               <br />
             </Col>
 
             <Col sm>
-              <div className="container-topimage">
-                <img
-                  className="d-block w-100 overlay-topimage bg-img"
-                  src="https://images.pexels.com/photos/2148217/pexels-photo-2148217.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                  alt="Third slide"
-                />
-                <h4 className="text-block-topimage">Nature</h4>
-              </div>
-
+              <Link to="/Computers">
+                <div className="container-topimage">
+                  <img
+                    className="opacity d-block w-100"
+                    src="https://images.pexels.com/photos/2148217/pexels-photo-2148217.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                    alt="second slide"
+                  />
+                  <h4 className="text-block-topimage">Computers</h4>
+                </div>
+              </Link>
               <br />
             </Col>
             <Col sm>
-              <div className="container-topimage">
-                <img
-                  className="d-block w-100"
-                  src="https://mdbootstrap.com/img/new/slides/031.jpg"
-                  alt="Third slide"
-                />
-                <h4 className="text-block-topimage">Nature</h4>
-              </div>
+              <Link to="/Electronics">
+                <div className="container-topimage">
+                  <img
+                    className=" opacity d-block w-100"
+                    src="https://images.pexels.com/photos/377711/pexels-photo-377711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                    alt="Third slide"
+                  />
+                  <h4 className="text-block-topimage">Electronics</h4>
+                </div>
+              </Link>
             </Col>
           </Row>
         </div>
@@ -119,19 +119,20 @@ const HomeScreen = ({ match }) => {
                   </Col>
 
                   <Col md={4}>
-                    <h1 className="iphone13-text">
-                      SHOP THE NEW IPHONE 13 PRO
-                    </h1>
+                    <h1 className="iphone13-text">SHOP THE NEW IPHONE 13</h1>
                     <p className="iphone13-text">
-                      Get the Ultimate Desktop Setup for Productivity Explore
-                      our latest and greatest electronics and accessories –
-                      their new features will be sure to blow your mind and your
-                      workflow.Get the Ultimate Desktop Setup for Productivity
-                      Explore our latest and greatest electronics and
-                      accessories – their new features will be sure to blow your
-                      mind and your workflow.
+                      Introduced on September 14, the iPhone 13 and iPhone 13
+                      mini are Apple's newest flagship iPhones on the more
+                      affordable end, and are being sold alongside the more
+                      expensive iPhone 13 Pro and iPhone 13 Pro Max. The iPhone
+                      13 and iPhone 13 mini are ideal for those who don't need
+                      pro-level camera features.
                     </p>
-                    <Button href="/" variant="dark" className="iphone13-text">
+                    <Button
+                      href="/product/618a1c0341c296339c6e9ee7/"
+                      variant="dark"
+                      className="iphone13-text"
+                    >
                       Shop Now
                     </Button>
                   </Col>
@@ -330,14 +331,18 @@ const HomeScreen = ({ match }) => {
                   <Col md={6}>
                     <h1 className="iphone13-text">Read About Our Story</h1>
                     <p className="iphone13-text">
-                      Get the Ultimate Desktop Setup for Productivity Explore
-                      our latest and greatest electronics and accessories –
-                      their new features will be sure to blow your mind and your
-                      workflowour latest and greatest electronics and
-                      accessories – their new features will be sure to blow your
-                      mind and your workflow
+                      Grey-Light is a Professional E-commerce Platform. Here we
+                      will provide you only best and top rated products, which
+                      you will like very much. We're dedicated to providing you
+                      the best of Electronic items with a focus on dependability
+                      and Computers, laptops. smart phones. We're working to
+                      provide you the bestElectronic items to you doorstep .
                     </p>
-                    <Button href="/" variant="dark" className="iphone13-text">
+                    <Button
+                      href="/about"
+                      variant="dark"
+                      className="iphone13-text"
+                    >
                       Continue Reading
                     </Button>
                   </Col>
@@ -354,8 +359,103 @@ const HomeScreen = ({ match }) => {
             </Container>
           ) : null}
 
-          {!keyword ? null : null}
-          {!keyword ? null : null}
+          {!keyword ? (
+            <div className="news-letter">
+              <link
+                href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css"
+                rel="stylesheet"
+                type="text/css"
+              />
+              <style
+                type="text/css"
+                dangerouslySetInnerHTML={{
+                  __html:
+                    "\n\t#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }\n\t/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.\n\t   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */\n",
+                }}
+              />
+              <div id="mc_embed_signup">
+                <form
+                  action="https://gmail.us20.list-manage.com/subscribe/post?u=c3db88653fd6a56b0207b473b&id=123fbcd134"
+                  method="post"
+                  id="mc-embedded-subscribe-form"
+                  name="mc-embedded-subscribe-form"
+                  className="validate"
+                  target="_blank"
+                  noValidate
+                >
+                  <div id="mc_embed_signup_scroll">
+                    <br />
+                    <h2>
+                      <center>Subscribe To Our NewsLetter</center>
+                    </h2>
+                    <div className="indicates-required">
+                      <span className="asterisk">*</span> indicates required
+                    </div>
+                    <div className="mc-field-group">
+                      <label htmlFor="mce-EMAIL">
+                        Email Address <span className="asterisk">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        name="EMAIL"
+                        className="required email"
+                        id="mce-EMAIL"
+                      />
+                    </div>
+                    <div className="mc-field-group">
+                      <label htmlFor="mce-FNAME">First Name </label>
+                      <input
+                        type="text"
+                        name="FNAME"
+                        className
+                        id="mce-FNAME"
+                      />
+                    </div>
+                    <div className="mc-field-group">
+                      <label htmlFor="mce-LNAME">Last Name </label>
+                      <input
+                        type="text"
+                        name="LNAME"
+                        className
+                        id="mce-LNAME"
+                      />
+                    </div>
+                    <div id="mce-responses" className="clear">
+                      <div
+                        className="response"
+                        id="mce-error-response"
+                        style={{ display: "none" }}
+                      />
+                      <div
+                        className="response"
+                        id="mce-success-response"
+                        style={{ display: "none" }}
+                      />
+                    </div>{" "}
+                    <div
+                      style={{ position: "absolute", left: "-5000px" }}
+                      aria-hidden="true"
+                    >
+                      <input
+                        type="text"
+                        name="b_c3db88653fd6a56b0207b473b_123fbcd134"
+                        tabIndex={-1}
+                      />
+                    </div>
+                    <div className="clear">
+                      <input
+                        type="submit"
+                        defaultValue="Subscribe"
+                        name="subscribe"
+                        id="mc-embedded-subscribe"
+                        className="button"
+                      />
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          ) : null}
         </>
       )}
     </>

@@ -20,9 +20,9 @@ import {
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
-import ComputersScreen from "./ComputersScreen";
-import ElectronicsScreen from "./ElectronicsScreen";
-import SmartPhonesScreen from "./SmartPhonesScreen";
+import ComputersSuggestion from "./ComputersSuggestionScreen";
+import ElectronicsSuggestion from "./ElectronicsSuggestionScreen";
+import SmartPhonesSuggestionScreen from "./SmartPhonesSuggestionScreen";
 
 const ProductScreen = ({ history, match }) => {
   const [qty, setQty] = useState(1);
@@ -149,7 +149,7 @@ const ProductScreen = ({ history, match }) => {
                   <ListGroup.Item>
                     <Button
                       onClick={addToCartHandler}
-                      className="btn-block"
+                      className="btn-block d-flex"
                       type="button"
                       disabled={product.countInStock === 0}
                     >
@@ -160,14 +160,17 @@ const ProductScreen = ({ history, match }) => {
               </Card>
             </Col>
           </Row>
-
+          <h2>
+            <br />
+            <center>Products That You Might Like</center>
+          </h2>
           <Row>
             {product.category === "Electronics" ? (
-              <ElectronicsScreen />
+              <ElectronicsSuggestion />
             ) : product.category === "Computers" ? (
-              <ComputersScreen />
+              <ComputersSuggestion />
             ) : (
-              <SmartPhonesScreen />
+              <SmartPhonesSuggestionScreen />
             )}
           </Row>
 
